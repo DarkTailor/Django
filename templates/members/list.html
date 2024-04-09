@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block footer %}{% endblock footer %}
+
+{% block content %}
+    {% for member in members %}
+        <div class="email-list-item">
+            <div class="email-list-detail">
+                <span class="from">{{ member.name }} {{ member.surname }}</span>
+                <a href="{% url 'detail_member' member.pk %}">
+                    <p class="msg">
+                        <strong>Telephone:</strong> {{ member.telephone }}<br>
+                        <strong>Location:</strong> {{ member.location }}<br>
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

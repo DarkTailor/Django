@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block internal_style %}
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+{% endblock internal_style %}
+
+{% block main_content %}
+    <form class="splash-container" method="post" action="{% url 'signup_user' %}">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-1 text-warning">Account Creation</h3>
+                <p>Please enter your user information to get registered</p>
+            </div>
+            <div class="card-body">
+                {{ form.as_p }}
+                <div class="form-group pt-2">
+                    <button class="btn btn-block btn-warning text-light" type="submit">Register My Account</button>
+                </div>
+            </div>
+            <div class="card-footer bg-white">
+                <p>Already a member? <a href="{% url 'login_user' %}" class="text-secondary">Login Here.</a></p>
+            </div>
+        </div>
+    </form>
+{% endblock main_content %}
